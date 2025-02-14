@@ -24,7 +24,12 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "classmap": [
+            "database/seeders",
+            "database/factories",
+            "app/Console/Commands"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

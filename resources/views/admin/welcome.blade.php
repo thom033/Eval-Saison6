@@ -13,5 +13,9 @@
 
     <a href="/admin/logout">
         <button>Logout</button>
+
+    <a href="/admin/reset-database">
+        <button>Reset Database</button>
+    </a>
 </body>
 </html>

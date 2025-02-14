@@ -1,9 +1,4 @@
-\c postgres
-DROP DATABASE coworking;
-create database coworking;
-\c coworking;
-
-CREATE TABLE admin (
+CREATE TABLE IF NOT EXISTS admin (
     id_admin SERIAL PRIMARY KEY,
     login VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL
@@ -12,24 +7,24 @@ CREATE TABLE admin (
 ALTER TABLE admin
 ALTER COLUMN password TYPE VARCHAR(250);
 
-CREATE TABLE client (
+CREATE TABLE IF NOT EXISTS client (
     id_client SERIAL PRIMARY KEY,
     numero_telephone VARCHAR(15) NOT NULL
 );
 
-CREATE TABLE espace (
+CREATE TABLE IF NOT EXISTS espace (
     id_espace SERIAL PRIMARY KEY,
     val VARCHAR(50) NOT NULL,
     prix_heure DECIMAL(10, 2) NOT NULL
 );
 
-CREATE TABLE option (
+CREATE TABLE IF NOT EXISTS option (
     id_option SERIAL PRIMARY KEY,
     val VARCHAR(50) NOT NULL,
     prix DECIMAL(10, 2) NOT NULL
 );
 
-CREATE TABLE reservation (
+CREATE TABLE IF NOT EXISTS reservation (
     id_reservation SERIAL PRIMARY KEY,
     id_client INT,
     id_espace INT,
@@ -39,7 +34,7 @@ CREATE TABLE reservation (
     FOREIGN KEY (id_espace) REFERENCES espace(id_espace)
 );
 
-CREATE TABLE reservation_details (
+CREATE TABLE IF NOT EXISTS reservation_details (
     id_reservation INT,
     id_option INT,
     PRIMARY KEY (id_reservation, id_option),
@@ -47,7 +42,7 @@ CREATE TABLE reservation_details (
     FOREIGN KEY (id_option) REFERENCES option(id_option)
 );
 
-CREATE TABLE paiement (
+CREATE TABLE IF NOT EXISTS paiement (
     id SERIAL PRIMARY KEY,
     id_reservation INT,
     reference VARCHAR(50) NOT NULL,

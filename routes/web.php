@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DatabaseResetController;
 
 Route::get('/', function () {
     return view('client/login');
@@ -17,3 +18,5 @@ Route::get('admin/logout', [AdminAuthController::class, 'logout']);
 
 Route::get('admin/register', [AdminAuthController::class, 'showRegisterForm']);
 Route::post('admin/register', [AdminAuthController::class, 'register']);
+
+Route::get('admin/reset-database', [DatabaseResetController::class, 'resetDatabase']);
