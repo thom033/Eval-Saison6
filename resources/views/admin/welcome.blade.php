@@ -6,6 +6,10 @@
     <title>Admin Welcome</title>
 </head>
 <body>
+    @php
+        $admin = session('admin');
+    @endphp
+
     <h1>Welcome, {{ $admin->login }}</h1>
     <p>You are logged in as admin.</p>
     <p>Admin ID: {{ $admin->id_admin }}</p>

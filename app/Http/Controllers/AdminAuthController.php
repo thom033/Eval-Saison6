@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Admin;
 
@@ -25,7 +26,8 @@ class AdminAuthController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials)) {
             $admin = Auth::guard('admin')->user();
-            return view('admin.welcome', compact('admin'));
+            Session::put('admin', $admin);
+            return view('admin.welcome');
         }
 
         return back()->withErrors([
